@@ -11,20 +11,27 @@ const NewsList = ({ api, limit }) => {
       {shuffleNews.map((news, index) => (
         <>
           {news.urlToImage && (
-            <div className="bg-slate-500 p-3 rounded-lg flex flex-col relative overflow-hidden image-container h-full">
+            <div className="bg-slate-900 rounded-md flex flex-col  overflow-hidden image-container h-full">
               <Link key={index} href={news?.url} className="cursor-pointer">
                 <Image
                   src={news?.urlToImage}
-                  height={300}
-                  width={300}
-                  className="w-full max-h-32 object-cover rounded-lg"
+                  height={400}
+                  width={400}
+                  objectFit="contain"
+                  className="w-full max-h-32 object-cover rounded-t-md"
                 />
-                <h1 className="font-bold w-90">{news.title}</h1>
-                <p>Penulis: {news?.author}</p>
-                <h2>Sumber:{news.source.name}</h2>
-                <p>Dipublikasikan pada: {formatDate(news?.publishedAt)}</p>
+                <h1 className="font-bold text-sm hover:text-sky-300">
+                  {news.title}
+                </h1>
+                <div className="flex gap-3 p-2 justify-between">
+                  <div className="text-xs text-slate-400">
+                    <h2>Source: {news.source.name}</h2>
+                    {news?.author && <p>Writer: {news?.author}</p>}
+                    <p>Published at: {formatDate(news?.publishedAt)}</p>
+                  </div>
+                  <SaveButton news={news} />
+                </div>
               </Link>
-              <SaveButton news={news} />
             </div>
           )}
         </>

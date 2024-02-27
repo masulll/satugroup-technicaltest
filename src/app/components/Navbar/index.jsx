@@ -6,13 +6,13 @@ export const Navbar = () => {
   let hours = time.getHours();
 
   return (
-    <header className="bg bg-slate-400 sticky top-0 z-50">
+    <header className=" border-b-2 border-white sticky top-0 z-50 bg-black ">
       <div className="flex md:flex-row flex-col justify-between p-3 gap-2 md:items-center">
-        <Link href={"/"} className="font-bold text-3xl italic">
+        <Link href={"/"} className="font-bold text-2xl italic">
           NEWS PORTAL
         </Link>
 
-        <h1 className=" font-medium">
+        <h1 className="font-medium">
           {time.toLocaleString("en-US", {
             hour: "numeric",
             minute: "numeric",

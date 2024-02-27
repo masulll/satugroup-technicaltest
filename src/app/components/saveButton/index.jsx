@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
+import { BookmarkSimple } from "@phosphor-icons/react";
 
 const SaveButton = ({ news }) => {
-  const [savedNews, setSavedNews] = useState(
-    JSON.parse(localStorage.getItem("savedNews")) || []
-  );
+  const [savedNews, setSavedNews] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("savedNews", JSON.stringify(savedNews));
@@ -17,9 +16,9 @@ const SaveButton = ({ news }) => {
   return (
     <button
       onClick={handleSaveClick}
-      className="p-3 bg-sky-400 hover:bg-sky-300 transition-all rounded-md"
+      className="p-2  hover:bg-sky-300  hover:text-black transition-all rounded-lg"
     >
-      Save
+      <BookmarkSimple size={32} />
     </button>
   );
 };

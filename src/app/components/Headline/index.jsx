@@ -11,29 +11,36 @@ const Headline = ({ api, limit }) => {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex ">
       {shuffleNews.map((news, index) => (
-        <div key={index} className="flex-1 ">
+        <div key={index} className="flex-col">
           {news.urlToImage && (
-            <div className="bg-slate-500 p-3 rounded-lg flex flex-col relative overflow-hidden image-container h-full">
+            <div className="flex flex-col bg-slate-900 rounded-md h-full">
               <Link href={news?.url} target="blank" className="cursor-pointer ">
-                <Image
-                  src={news?.urlToImage}
-                  layout="responsive"
-                  width={1000}
-                  height={1200}
-                  objectFit="cover"
-                  className="  max-w-full max-h-full object-fill"
-                />
-                <div className="relative">
-                  <h1 className="font-bold">{news.title}</h1>
-                  <p>{news?.description}</p>
-                  <p>Penulis: {news?.author}</p>
-                  <h2>Sumber:{news.source.name}</h2>
-                  <p>Dipublikasikan pada: {formatDate(news?.publishedAt)}</p>
+                <div>
+                  <Image
+                    src={news?.urlToImage}
+                    width={1200}
+                    height={1200}
+                    objectFit="contain"
+                    className=" rounded-t-md"
+                  />
                 </div>
+
+                <h1 className="font-bold p-2 text-xl hover:text-sky-300">
+                  {news.title}
+                </h1>
               </Link>
-              <SaveButton news={news} />
+              <p className="p-2">{news?.description}</p>
+
+              <div className="flex gap-3 p-2 justify-between items-end">
+                <div className="text-xs text-slate-400">
+                  <h2>Source: {news.source.name}</h2>
+                  {news?.author && <p>Writer: {news?.author}</p>}
+                  <p>Published at: {formatDate(news?.publishedAt)}</p>
+                </div>
+                <SaveButton news={news} className="" />
+              </div>
             </div>
           )}
         </div>

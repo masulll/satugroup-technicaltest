@@ -9,5 +9,5 @@ export const formatDate = (dateString) => {
     timeZone: "Asia/Jakarta",
   };
 
-  return new Date(dateString).toLocaleDateString("id-ID", options);
+  return new Date(dateString).toLocaleDateString("en-EN", options);
 };
